@@ -136,11 +136,12 @@
       text-align: center;
   }
   
-    .info {
+    .infoBook {
       margin: 0.5em;
       padding: 0.5em;
       margin: 0 auto;
       background: rgb(201, 245, 241);
       border: 1px solid rgb(173, 173, 177);
       text-align: center;
+      border-radius: 4px;
   }

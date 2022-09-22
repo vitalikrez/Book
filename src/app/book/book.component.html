@@ -1,6 +1,6 @@
 <div class="toolbar" role="banner">
     <img width="40" alt="Angular Logo"
-        src="https://e7.pngegg.com/pngimages/702/612/png-clipart-white-and-yellow-book-illustration-scalable-graphics-book-icon-an-open-book-angle-comic-book-thumbnail.png" />
+        src="../../assets/img/logo_main.png" />
     <span>СЕРВІС "КНИГА"</span>
     <div class="spacer"></div>
     <a rel="noopener" href="" title="Main">
@@ -20,9 +20,8 @@
         <p>Виберіть книгу для перегляду інформацій щодо неї!</p>
 
         <div class="card-container">
-
             <div class="card" *ngFor="let item of books" (click)="onSelect(item)">
-                <img src="https://www.kindpng.com/picc/m/163-1631683_reading-icon-png-ico-books-transparent-png.png"
+                <img src="..//../assets/img/logo_book.png"
                     height="30" width="30">
                 <span>{{item.name}}</span>
             </div>
@@ -32,12 +31,30 @@
     <br>
 
 
-    <div *ngIf="selectedItem" >
+    <div *ngIf="selectedItem">
         <div class="infoBook" (click)="remove()">
-            <h2>Інформація про вибрану книгу</h2>
-
-            ТУТ БУДЕ ЗНАХОДИТИСЯ ІНФОРМАЦІЯ ПРО ВИБРАНУ КНИГУ
             <h1>{{selectedItem.name}}</h1>
+            <table width="100%" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="leftcol"><img src="{{selectedItem.cover}}" alt="{{selectedItem.name}}">
+                    </td>
+                    
+                    <td valign="top"> 
+                        <h3>Автор:</h3> {{selectedItem.author}} 
+                        <hr>
+                        <h3>Рік видавництва:</h3> {{selectedItem.year}} 
+                        <hr>
+                        <h3>Видавництво:</h3> {{selectedItem.publisher}}
+                        <hr>
+                        <h3>Кількість сторінок:</h3> {{selectedItem.pages}}
+                        <hr>
+                        <h3>Опис:</h3> {{selectedItem.descriptions}}
+                        <hr>
+                    </td>
+                        
+                </tr>
+            </table>
+
 
         </div>
     </div>

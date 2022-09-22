@@ -6,6 +6,12 @@
   h6 {
       margin: 8px 0;
   }
+  h3{
+    color: rgb(255, 145, 0);
+  }
+  h1{
+    color: rgb(255, 145, 0);    text-align: center;
+  }
 
   p {
       margin: 0;
@@ -134,14 +140,30 @@
       background: rgb(244, 244, 245);
       border: 1px solid rgb(173, 173, 177);
       text-align: center;
+            border-radius: 10px;
   }
   
     .infoBook {
       margin: 0.5em;
       padding: 0.5em;
       margin: 0 auto;
-      background: rgb(201, 245, 241);
+      background: rgb(244, 244, 245);
       border: 1px solid rgb(173, 173, 177);
-      text-align: center;
-      border-radius: 4px;
+      border-radius: 10px;
+  }
+                 TD.leftcol {
+                     width: 110px;
+                     vertical-align: top;
+                     padding: 10px;
+                 }
+
+  .wrapper {
+      display: flex;
+
+  }
+
+  .wrapper>div {
+      flex: 1;
+      border: 1px solid rgb(143, 143, 146);
+      padding: 10px;
   }

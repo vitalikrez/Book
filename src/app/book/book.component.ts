@@ -1,20 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from './book';
-import { myBooks } from './list-book';
+//import { myBooks } from './list-book';
+
+import { BookServiceService } from '../../app/book-service.service'
+
+
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
-  styleUrls: ['./book.component.css']
+  styleUrls: ['./book.component.css'],
+  providers: [BookServiceService]
+
 })
 export class BookComponent implements OnInit {
 
-
-  books = myBooks;
-
   selectedItem!: Book;
 
+  items: any;
+  descriptions!: string;
+  name!: string;
+  author!: string;
+  year!: number;
+  pages!: number;
+  publisher!: string;
+  cover!: string;
+
   onSelect(item: Book): void {
-    
+
     this.selectedItem = item;
     const boxes = document.getElementsByClassName(
       'infoBook',
@@ -26,24 +38,45 @@ export class BookComponent implements OnInit {
   }
 
 
+
   remove() {
-      const boxes = document.getElementsByClassName(
-        'infoBook',
-      ) as HTMLCollectionOf<HTMLElement>;
+    const boxes = document.getElementsByClassName(
+      'infoBook',
+    ) as HTMLCollectionOf<HTMLElement>;
 
-      for (let i = 0; i < boxes.length; i++) {
-        boxes[i].style.display = 'none';
-      }
-      
-
-
-
+    for (let i = 0; i < boxes.length; i++) {
+      boxes[i].style.display = 'none';
+    }
   }
 
-  constructor() { }
+  onSelectAdd(): void {
+    const boxes = document.getElementsByClassName(
+      'addBook',
+    ) as HTMLCollectionOf<HTMLElement>;
 
-  ngOnInit(): void {
+    for (let i = 0; i < boxes.length; i++) {
+      boxes[i].style.display = 'block';
+    }
+  }
 
+  removeAddBook() {
+    const boxes = document.getElementsByClassName(
+      'addBook',
+    ) as HTMLCollectionOf<HTMLElement>;
+
+    for (let i = 0; i < boxes.length; i++) {
+      boxes[i].style.display = 'none';
+    }
+  }
+
+  constructor(private dataService: BookServiceService) { }
+
+  addItem(name: string, author: string, year: number, pages: number, publisher: string, cover: string, descriptions: string) {
+    this.dataService.addData(name, author, year, pages, publisher, cover, descriptions);
+  }
+
+  ngOnInit() {
+    this.items = this.dataService.getData()
   }
 
 }

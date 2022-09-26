@@ -1,6 +1,5 @@
 <div class="toolbar" role="banner">
-    <img width="40" alt="Angular Logo"
-        src="../../assets/img/logo_main.png" />
+    <img width="40" alt="Angular Logo" src="../../assets/img/logo_main.png" />
     <span>СЕРВІС "КНИГА"</span>
     <div class="spacer"></div>
     <a rel="noopener" href="" title="Main">
@@ -13,16 +12,13 @@
     </a>
 
 </div>
-
 <div class="content">
     <div class="mainDiv">
         <h2>Наші книги</h2>
-        <p>Виберіть книгу для перегляду інформацій щодо неї!</p>
-
+        <p>Виберіть книгу для перегляду інформації щодо неї!</p>
         <div class="card-container">
-            <div class="card" *ngFor="let item of books" (click)="onSelect(item)">
-                <img src="..//../assets/img/logo_book.png"
-                    height="30" width="30">
+            <div class="card" *ngFor="let item of items" (click)="onSelect(item)">
+                <img src="..//../assets/img/logo_book.png" height="30" width="30">
                 <span>{{item.name}}</span>
             </div>
 
@@ -30,19 +26,21 @@
     </div>
     <br>
 
+    <button class="btn btn-default" (click)="onSelectAdd()">Додати нову книгу</button>
+    <br>
 
     <div *ngIf="selectedItem">
-        <div class="infoBook" (click)="remove()">
+        <div class="infoBook" (dblclick)="remove()">
             <h1>{{selectedItem.name}}</h1>
             <table width="100%" cellspacing="0" cellpadding="0">
                 <tr>
                     <td class="leftcol"><img src="{{selectedItem.cover}}" alt="{{selectedItem.name}}">
                     </td>
-                    
-                    <td valign="top"> 
-                        <h3>Автор:</h3> {{selectedItem.author}} 
+
+                    <td valign="top">
+                        <h3>Автор:</h3> {{selectedItem.author}}
                         <hr>
-                        <h3>Рік видавництва:</h3> {{selectedItem.year}} 
+                        <h3>Рік видавництва:</h3> {{selectedItem.year}}
                         <hr>
                         <h3>Видавництво:</h3> {{selectedItem.publisher}}
                         <hr>
@@ -51,21 +49,97 @@
                         <h3>Опис:</h3> {{selectedItem.descriptions}}
                         <hr>
                     </td>
-                        
+
                 </tr>
             </table>
-
-
         </div>
     </div>
 
+    <br>
+        <div class="addBook" (dblclick)="removeAddBook()">
+            <div class="panel">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <div class="col-md-8">
+                            <input id="name" class="form-control" [(ngModel)]="name" placeholder="Назва" />
+                        </div>
+                    </div>
 
-    <svg id="clouds" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677"
-        viewBox="0 0 2611.084 485.677">
-        <title>Gray Clouds Background</title>
-        <path id="Path_39" data-name="Path 39"
-            d="M2379.709,863.793c10-93-77-171-168-149-52-114-225-105-264,15-75,3-140,59-152,133-30,2.83-66.725,9.829-93.5,26.25-26.771-16.421-63.5-23.42-93.5-26.25-12-74-77-130-152-133-39-120-212-129-264-15-54.084-13.075-106.753,9.173-138.488,48.9-31.734-39.726-84.4-61.974-138.487-48.9-52-114-225-105-264,15a162.027,162.027,0,0,0-103.147,43.044c-30.633-45.365-87.1-72.091-145.206-58.044-52-114-225-105-264,15-75,3-140,59-152,133-53,5-127,23-130,83-2,42,35,72,70,86,49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33,61.112,8.015,113.854-5.72,150.492-29.764a165.62,165.62,0,0,0,110.861-3.236c47,94,178,113,251,33,31.385,4.116,60.563,2.495,86.487-3.311,25.924,5.806,55.1,7.427,86.488,3.311,73,80,204,61,251-33a165.625,165.625,0,0,0,120,0c51,13,108,15,157-5a147.188,147.188,0,0,0,33.5-18.694,147.217,147.217,0,0,0,33.5,18.694c49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33C2446.709,1093.793,2554.709,922.793,2379.709,863.793Z"
-            transform="translate(142.69 -634.312)" fill="#eee" />
-    </svg>
+                    <div class="form-group">
+                        <div class="col-md-8">
+                            <input id="author" class="form-control" [(ngModel)]="author" placeholder="Автор" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="number" class="form-control" [(ngModel)]="year" placeholder="Рік видавництва" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <input type="number" class="form-control" [(ngModel)]="pages"
+                            placeholder="Кількість сторінок" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <input class="form-control" [(ngModel)]="publisher" placeholder="Видавництво" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <input class="form-control" [(ngModel)]="cover" placeholder="Фото" />
+                    </div>
+                </div>
 
-</div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <div class="col-md-8">
+                            <textarea class="form-control" [(ngModel)]="descriptions" placeholder="Опис" cols="30"
+                                rows="10"></textarea>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-8">
+                            <button class="btn btn-default"
+                                (click)="addItem(name, author, year, pages, publisher, cover, descriptions)">
+                                Додати
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Назва</th>
+                            <th>Автор</th>
+                            <th>Рік видавництва</th>
+                            <th>Кількість сторінок</th>
+                            <th>Видавництво</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of items">
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.author }}</td>
+                            <td>{{ item.year }}</td>
+                            <td>{{ item.pages }}</td>
+                            <td>{{ item.publisher }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+        <svg id="clouds" xmlns="http://www.w3.org/2000/svg" width="2611.084" height="485.677"
+            viewBox="0 0 2611.084 485.677">
+            <title>Gray Clouds Background</title>
+            <path id="Path_39" data-name="Path 39"
+                d="M2379.709,863.793c10-93-77-171-168-149-52-114-225-105-264,15-75,3-140,59-152,133-30,2.83-66.725,9.829-93.5,26.25-26.771-16.421-63.5-23.42-93.5-26.25-12-74-77-130-152-133-39-120-212-129-264-15-54.084-13.075-106.753,9.173-138.488,48.9-31.734-39.726-84.4-61.974-138.487-48.9-52-114-225-105-264,15a162.027,162.027,0,0,0-103.147,43.044c-30.633-45.365-87.1-72.091-145.206-58.044-52-114-225-105-264,15-75,3-140,59-152,133-53,5-127,23-130,83-2,42,35,72,70,86,49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33,61.112,8.015,113.854-5.72,150.492-29.764a165.62,165.62,0,0,0,110.861-3.236c47,94,178,113,251,33,31.385,4.116,60.563,2.495,86.487-3.311,25.924,5.806,55.1,7.427,86.488,3.311,73,80,204,61,251-33a165.625,165.625,0,0,0,120,0c51,13,108,15,157-5a147.188,147.188,0,0,0,33.5-18.694,147.217,147.217,0,0,0,33.5,18.694c49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33C2446.709,1093.793,2554.709,922.793,2379.709,863.793Z"
+                transform="translate(142.69 -634.312)" fill="#eee" />
+        </svg>
+
+    </div>

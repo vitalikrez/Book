@@ -72,11 +72,18 @@ export class BookComponent implements OnInit {
   constructor(private dataService: BookServiceService) { }
 
   addItem(name: string, author: string, year: number, pages: number, publisher: string, cover: string, descriptions: string) {
-    this.dataService.addData(name, author, year, pages, publisher, cover, descriptions);
+    if (name != null && author != null && year != null && pages != null && publisher != null && cover != null && descriptions != null) {
+      this.dataService.addData(name, author, year, pages, publisher, cover, descriptions);
+    }
+    else
+      alert('Заповніть, будь ласка, всі поля форми!!!');
+
   }
 
   ngOnInit() {
     this.items = this.dataService.getData()
   }
+
+
 
 }

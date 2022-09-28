@@ -177,3 +177,20 @@
       border: 1px solid rgb(143, 143, 146);
       padding: 10px;
   }
+
+  th {
+      font-weight: normal;
+      color: #039;
+      padding: 10px 15px;
+      border-top: 2px solid #8abef1;
+  }
+
+  td {
+      color: #669;
+      border-top: 2px solid #8abef1;
+      padding: 10px 15px;
+  }
+
+  tr:nth-child(2n) {
+      background: #e8edff;
+  }
